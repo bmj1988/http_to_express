@@ -1,3 +1,9 @@
+const express = require('express')
+const app = express()
+
+app.use(express.json())
+
+
 // HTTP Server - Import and initialize server
 // const http = require('http');
 // const server = http.createServer((req, res) => {
@@ -40,10 +46,13 @@
 
 // STEP 2: Handle route with param (/users/:userId) sending plain-text response
 // Your code here
-
+app.get('/users/:userId', (req, res) => {
+    res.send(`User details found for User ${req.params.userId}`)
+})
 // HTTP Server: Set port and listen for requests
 // const port = 5000;
 // server.listen(port, () => console.log('Server is listening on port', port));
 
 // STEP 1: Set port and listen for requests
-// Your code here
+const port = 5000;
+app.listen(port, () => console.log(`Server is listening on port ${port}`))
